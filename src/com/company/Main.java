@@ -31,17 +31,30 @@ public class Main {
             FileReader fileReader = new FileReader(path);
             BufferedReader reader = new BufferedReader(fileReader);
             String line;
-            int count1 = 0,max =0, min =1024;
+            int count1 = 0, max = 0, min = 1024;
+            String[] str = new String[0];
+            int kol = 0;
             while ((line = reader.readLine()) != null) {
                 count1++;
                 int length = line.length();
-                if (length>=max) max = length;
-                if (length<=min) min = length;
-                if (length>=1024) throw new OperationAttemptException();
+                str = line.split("\" ");
+                String[] parts = str[2].split(";");
+                if (parts.length >= 2) {
+                    String fragment = parts[1];
+                    // String str1 = fragment.trim();
+                    String[] parts1 = fragment.split("/");
+
+                    if ((parts1[0].strip().equals("YandexBot")) || (parts1[0].strip().equals("GoogleBot"))) kol++;
+
+                }
+                if (length >= max) max = length;
+                if (length <= min) min = length;
+                if (length >= 1024) throw new OperationAttemptException();
+
             }
-            System.out.println("Всего строк в файле: "+count1);
-            System.out.println("Максимальная длина строки: "+max);
-            System.out.println("Минимальная длина строки: "+min);
+            System.out.println("Всего строк в файле: " + count1);
+            System.out.println(kol);
+            System.out.println(kol+"/"+count1);
         }
         catch (Exception ex){
             ex.printStackTrace();
