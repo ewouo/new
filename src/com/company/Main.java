@@ -33,7 +33,7 @@ public class Main {
             String line;
             int count1 = 0, max = 0, min = 1024;
             String[] str = new String[0];
-            int kol = 0;
+            int kol = 0,kol1 = 0;
             while ((line = reader.readLine()) != null) {
                 count1++;
                 int length = line.length();
@@ -44,7 +44,8 @@ public class Main {
                     // String str1 = fragment.trim();
                     String[] parts1 = fragment.split("/");
 
-                    if ((parts1[0].strip().equals("YandexBot")) || (parts1[0].strip().equals("GoogleBot"))) kol++;
+                    if ((parts1[0].strip().equals("YandexBot"))) kol++;
+                    if (parts1[0].strip().equals("GoogleBot")) kol1++;
 
                 }
                 if (length >= max) max = length;
@@ -53,8 +54,9 @@ public class Main {
 
             }
             System.out.println("Всего строк в файле: " + count1);
-            System.out.println(kol);
-            System.out.println(kol+"/"+count1);
+            System.out.println(kol+kol1);
+            System.out.println((double)kol/count1);
+            System.out.println((double)kol1/count1);
         }
         catch (Exception ex){
             ex.printStackTrace();
