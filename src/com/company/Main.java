@@ -27,6 +27,7 @@ public class Main {
             }
 
         }
+
         try {
             FileReader fileReader = new FileReader(path);
             BufferedReader reader = new BufferedReader(fileReader);
